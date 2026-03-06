@@ -1,5 +1,2 @@
 ocrmypdf>=15.0.0
 Pillow>=10.0.0
-pdfium2>=4.0.0
-pluggy>=1.3.0
-packaging>=23.0
