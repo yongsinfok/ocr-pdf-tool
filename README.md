@@ -14,21 +14,34 @@
 
 ### Windows 用户
 
+#### 方式一：一键安装（推荐）
+
 ```powershell
 # 1. 克隆仓库
 git clone https://github.com/yongsinfok/ocr-pdf-tool.git
 cd ocr-pdf-tool
 
-# 2. 双击运行 install.bat 安装依赖
+# 2. 安装 Tesseract OCR（必须）
+# 访问 https://github.com/UB-Mannheim/tesseract/wiki 下载安装
+# 安装后将 C:\Program Files\Tesseract-OCR 添加到系统 PATH
+
+# 3. 双击运行 install.bat 安装 Python 依赖
 install.bat
 
-# 3. 将你的 PDF 放到 input/ 目录
+# 4. 将你的 PDF 放到 input/ 目录
 
-# 4. 双击运行 run_ocr.bat 开始处理
+# 5. 双击运行 run_ocr.bat 开始处理
 run_ocr.bat
 
-# 5. 处理完成后，结果在 output/ 目录
+# 6. 处理完成后，结果在 output/ 目录
 ```
+
+#### 方式二：手动安装 Tesseract
+
+1. 下载 Tesseract：https://github.com/UB-Mannheim/tesseract/wiki
+2. 安装并勾选 "Install for all users"
+3. 添加到系统 PATH：`C:\Program Files\Tesseract-OCR`
+4. 验证安装：打开 CMD，运行 `tesseract --version`
 
 ### Linux/Mac 用户
 
@@ -124,10 +137,22 @@ python ocr.py --language chi_sim --jobs 8
 
 ### 问题：找不到 Tesseract
 
+**错误信息：** `Could not find program 'tesseract' on the PATH`
+
 **解决方案**：
-- Windows：安装时已包含，或从 https://github.com/UB-Mannheim/tesseract/wiki 下载
-- Linux：`sudo apt install tesseract-ocr`
-- Mac：`brew install tesseract`
+
+**Windows:**
+1. 访问 https://github.com/UB-Mannheim/tesseract/wiki
+2. 下载最新的 Tesseract for Windows 安装程序
+3. 运行安装程序，勾选 "Install for all users"
+4. 添加到系统 PATH：
+   - 右键 "此电脑" → 属性 → 高级系统设置
+   - 环境变量 → 系统变量 → Path → 编辑
+   - 新建，添加：`C:\Program Files\Tesseract-OCR`
+5. 重新打开 CMD/PowerShell，验证：`tesseract --version`
+
+**Linux:** `sudo apt install tesseract-ocr`
+**Mac:** `brew install tesseract`
 
 ### 问题：语言包缺失
 
@@ -140,6 +165,15 @@ sudo apt install tesseract-ocr-chi-sim
 brew install tesseract-lang
 
 # Windows（自动安装）
+```
+
+### 问题：unpaper 错误（Windows 用户）
+
+**错误信息：** `Could not find program 'unpaper' on the PATH`
+
+**解决方案：** 这是正常的，已在新版本中禁用。请拉取最新版本：
+```powershell
+git pull
 ```
 
 ### 问题：处理速度太慢

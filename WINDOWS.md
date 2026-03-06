@@ -64,13 +64,49 @@ Windows 上的默认配置 (`config.json`)：
 git pull
 ```
 
-### "Tesseract not found"
+### "Tesseract not found" 或 "Could not find program 'tesseract' on the PATH"
 
 **解决方案：** 安装 Tesseract OCR
 
-1. 从这里下载：https://github.com/UB-Mannheim/tesseract/wiki
-2. 安装时勾选 "Install for all users"
-3. 将 Tesseract 安装目录（通常是 `C:\Program Files\Tesseract-OCR`）添加到系统 PATH
+#### 步骤 1：下载 Tesseract
+
+访问：https://github.com/UB-Mannheim/tesseract/wiki
+
+点击 "Latest Windows installer" 下载最新的安装程序。
+
+#### 步骤 2：安装 Tesseract
+
+1. 运行下载的安装程序
+2. **重要：** 勾选 "Install for all users"（为所有用户安装）
+3. 选择安装路径（默认：`C:\Program Files\Tesseract-OCR`）
+
+#### 步骤 3：添加到系统 PATH
+
+1. 按 `Win + X`，选择"系统"
+2. 点击"高级系统设置"
+3. 点击"环境变量"
+4. 在"系统变量"区域找到"Path"，点击"编辑"
+5. 点击"新建"，输入：`C:\Program Files\Tesseract-OCR`
+6. 点击"确定"保存所有窗口
+
+#### 步骤 4：验证安装
+
+**重要：** 必须重新打开 CMD 或 PowerShell 才能生效！
+
+```cmd
+tesseract --version
+```
+
+如果看到版本信息，说明安装成功。
+
+#### 快速验证（推荐）
+
+安装完成后，运行安装脚本：
+```powershell
+install.bat
+```
+
+如果显示"✅ Tesseract OCR 已安装"，说明配置成功。
 
 ### "Language data not found"
 
